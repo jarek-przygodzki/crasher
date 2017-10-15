@@ -18,7 +18,7 @@ public class Resource {
      */
     @POST
     @Path("/jvm-crash")
-    public Response jvmCrash() throws Exception {
+    public Response jvmCrash(){
         JvmCrasher.crashJvm();
         return Response.noContent()
                        .build();

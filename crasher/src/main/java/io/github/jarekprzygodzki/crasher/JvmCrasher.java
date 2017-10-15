@@ -6,8 +6,12 @@ import sun.misc.Unsafe;
 
 public class JvmCrasher {
 
-    public static void crashJvm() throws NoSuchFieldException, IllegalAccessException {
-        getUnsafe().getByte(0);
+    public static void crashJvm(){
+        try {
+            getUnsafe().getByte(0);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new RuntimeException("Failed to crash JVM", e);
+        }
     }
 
     private static Unsafe getUnsafe() throws NoSuchFieldException, IllegalAccessException {
